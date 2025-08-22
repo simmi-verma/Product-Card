@@ -11,9 +11,14 @@ const SortBar = ({ sortBy, setSortBy, productCount, totalProducts }) => {
 
   return (
     <header className="listing-header">
-      <div className="sort-info">
-        Showing {productCount} of {totalProducts} products
-      </div>
+      <h1>
+        Products
+        <span>
+          Showing {productCount} of {totalProducts} results
+        </span>
+      </h1>
+
+      {/* ⚡ Sort Section */}
       <div className="sort-options">
         <strong>Sort By:</strong>
         {sortOptions.map((option) => (

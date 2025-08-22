@@ -3,7 +3,6 @@ import React from 'react';
 const ProductCard = ({ product, wishlist, toggleWishlist }) => {
   const { _id, imageUrl, title, subtitle, rating, price, discount } = product;
 
-  // Check if this product is in the wishlist
   const isWishlisted = wishlist.some(item => item.productId._id === _id);
 
   return (
@@ -25,10 +24,10 @@ const ProductCard = ({ product, wishlist, toggleWishlist }) => {
         </div>
         <div className="price">
           <span>₹{price}</span>
-          {discount ? (
+          {discount > 0 ? (
             <span className="discount">{discount}% off</span>
           ) : (
-            <span className="discount">No discount</span>
+            null
           )}
         </div>
       </div>

@@ -6,7 +6,9 @@ const Wishlist = require("../models/Wishlist");
 router.get("/", async (req, res) => {
   try {
     const items = await Wishlist.find().populate("productId");
-    res.json(items);
+    // Filter out items where productId population resulted in null (product might have been deleted)
+    const validItems = items.filter(item => item.productId !== null);
+    res.json(validItems);
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
@@ -36,5 +38,8 @@ router.delete("/:id", async (req, res) => {
     res.status(500).json({ error: err.message });
   }
 });
+
+
+
 
 module.exports = router;
